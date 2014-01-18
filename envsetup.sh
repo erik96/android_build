@@ -140,7 +140,7 @@ function setpaths()
     export TARGET_GCC_VERSION_AND=$targetgccversionand
 
     # The gcc toolchain does not exists for windows/cygwin. In this case, do not reference it.
-    if [ "$LINARO_GCC_VERSION" = "4.8" ]; then
+    if [ "$LINARO_GCC_VERSION" = "4.7" ]; then
     export ANDROID_EABI_TOOLCHAIN=
     local ARCH=$(get_build_var TARGET_ARCH)
     case $ARCH in
@@ -178,7 +178,7 @@ function setpaths()
     unset ARM_EABI_TOOLCHAIN ARM_EABI_TOOLCHAIN_PATH
     case $ARCH in
         arm)
-    if [ "$LINARO_GCC_VERSION" = "4.8" ]; then
+    if [ "$LINARO_GCC_VERSION" = "4.7" ]; then
             toolchaindir=arm/arm-eabi-$targetgccversionarm/bin
     else    
             toolchaindir=arm/arm-eabi-LK/bin
