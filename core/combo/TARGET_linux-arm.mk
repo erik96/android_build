@@ -78,9 +78,9 @@ endif
 
 TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 
-TARGET_arm_CFLAGS := -Os \
+TARGET_arm_CFLAGS := -O2 \
                         -fomit-frame-pointer \
-                        -fno-strict-aliasing \
+                        -fstrict-aliasing \
                         -fno-zero-initialized-in-bss \
                         -funswitch-loops \
                         -fno-tree-vectorize \
