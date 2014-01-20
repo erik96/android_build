@@ -78,42 +78,21 @@ endif
 
 TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 
-ifeq ($(TARGET_USE_O3),true)
-TARGET_arm_CFLAGS := -O3 \
-                        -fomit-frame-pointer \
-                        -fstrict-aliasing \
-                        -funswitch-loops
-else
 TARGET_arm_CFLAGS := -Os \
                         -fomit-frame-pointer \
-                        -fstrict-aliasing \
+                        -fno-strict-aliasing \
                         -fno-zero-initialized-in-bss \
                         -funswitch-loops \
                         -fno-tree-vectorize \
                         -Wno-unused-parameter \
                         -Wno-unused-value \
                         -Wno-unused-function
-endif
 
 # Modules can choose to compile some source as thumb.
-ifeq ($(TARGET_USE_O3),true)
-    TARGET_thumb_CFLAGS := -mthumb \
-                            -O3 \
-                            -fomit-frame-pointer \
-                            -fno-strict-aliasing \
-                            -Wstrict-aliasing=2 \
-                            -Werror=strict-aliasing \
-                            -fno-tree-vectorize \
-                            -funsafe-math-optimizations \
-                            -Wno-unused-parameter \
-                            -Wno-unused-value \
-                            -Wno-unused-function
-else
     TARGET_thumb_CFLAGS := -mthumb \
                             -Os \
                             -fomit-frame-pointer \
                             -fno-strict-aliasing
-endif
 
 # Set FORCE_ARM_DEBUGGING to "true" in your buildspec.mk
 # or in your environment to force a full arm build, even for
@@ -189,7 +168,7 @@ TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden
 TARGET_RELEASE_CFLAGS := \
                         -DNDEBUG \
                         -g \
-                        -Wstrict-aliasing=2 \
+                        -Wno-strict-aliasing \
                         -fgcse-after-reload \
                         -frerun-cse-after-loop \
                         -frename-registers

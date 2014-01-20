@@ -179,9 +179,9 @@ function setpaths()
     case $ARCH in
         arm)
     if [ "$LINARO_GCC_VERSION" = "4.7" ]; then
-            toolchaindir=arm/arm-eabi-$targetgccversionarm/bin
+            toolchaindir=arm/arm-eabi-4.6/bin
     else    
-            toolchaindir=arm/arm-eabi-LK/bin
+            toolchaindir=arm/arm-eabi-4.6/bin
     fi
             if [ -d "$gccprebuiltdir/$toolchaindir" ]; then
                  export ARM_EABI_TOOLCHAIN="$gccprebuiltdir/$toolchaindir"
